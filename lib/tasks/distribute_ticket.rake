@@ -30,9 +30,9 @@ namespace :distribute_ticket do
 
   desc "全ユーザーのticket_countをトランザクションで10増加させる"
   task transact: :environment do
-    activeRecord::Base.transaction do
+    ActiveRecord::Base.transaction do
       User.find_each do |user|
-        user.increment!(:ticket_count,10)
+        user.increment!(:ticket_count, 10)
       end
     end
   end
